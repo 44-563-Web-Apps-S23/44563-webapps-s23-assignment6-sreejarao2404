@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <tittle>Painters descrp</title>
+    </head>
+<body>
+
+<h2>Painter entry Ambati Sreeja Rao</h2>
+<form>
+    <label for="form_painter"> The hidden painter name </label>
+    <input type ="password" id="password" name="form_painter" min=10 max=50 step=2 value="Monet"> <br>
+
+    <label for="form_check">Guess the painter</label>
+    <input type ="text" id="check" name="form_check" min=10 max=50 step=2> <br>
+
+    <input type="button" onclick="checkPainter()" value="Check the guess">
+
+</form>
+<p id="result">Result </p>
+
+
+<script> 
+var good=0
+var oops=0
+
+function checkPainter(){
+    console.log("Getting form values")
+    password = document.getElementById("password").value
+    check = document.getElementById("check").value
+    confirmed = confirm("Are these the values? "+password+" and "+check)
+    
+    out = document.getElementById("result")
+    if(password==check){
+        alert("You got it right")
+        good=good+1
+    } else {
+        oops=oops+1
+        alert('Sorry')
+    }
+    out.innerHTML ="Right count: " +good+" Wrong count: "+oops
+}
+</script>
+
+<div class="container">
+    <img id="pic" src="NorfolkIslandPine.jpg" height="100" weight="100" onclick="selectImage()">
+</div>
+
+<script>
+    var Imageimg=1
+    var img=document.getElementById("pic")
+    function selectImage()
+    {
+        switch(Imageimg)
+        {
+            case 1:
+                img.src="Abelia.jpg"
+                Imageimg++
+                break
+            case 2:
+                img.src="Abies.jpg"
+                Imageimg++
+                break
+            case 3:
+                img.src="ilex.jpg"
+                Imageimg=1
+                break
+            default:
+        }
+    }
+</script>
+</body>
+</html> 
+
+</body>
+</html>
