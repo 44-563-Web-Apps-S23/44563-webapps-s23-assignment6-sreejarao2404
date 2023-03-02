@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>conversions of currency</title>
+</head>
+
+<body>
+
+    <h2>Sreeja Rao Ambati shows currency conversions</h2>
+
+    <form>
+        <label for="form1_age">Enter base amount </label>
+        <input type="number" id="form1_age" name="form1_age" value=50> <br>
+
+        <label for="form1_nick">Enter the conversion rate.</label>
+        <input type="number" id="form1_nick" name="form1_nick" value=35> <br>
+
+        <input type="button" onclick="convert()" value="Shows conversions">
+    </form>
+
+
+    <p id="result">value is converted value; </p>
+
+    <script>
+
+        function convert() 
+        {
+
+            ba = document.getElementById("form1_age").value
+            conversionrate = document.getElementById("form1_nick").value
+            ts = ""
+            for (i = 1; i <= 5; i++) {
+                ts = ba + " is " + Math.round(conversionrate * ba * 100) / 100 + "; " +
+                    ba * 2 + " is " + Math.round(conversionrate * ba * 2 * 100) / 100 + "; " +
+                    ba * 4 + " is " + Math.round(conversionrate * ba * 4 * 100) / 100 + "; " +
+                    ba * 8 + " is " + Math.round(conversionrate * ba * 8 * 100) / 100 + "; " +
+                    ba * 16 + " is " + Math.round(conversionrate * ba * 16 * 100) / 100 + "; "
+            }
+            out = document.getElementById("result")
+            if (ts) 
+            {
+                out.innerHTML = "Conversions are: " + ts
+            }
+        }
+
+    </script>
+
+    <form>
+        <label>
+            <input type="radio" name="operation" value="mean" onClick="chooseOp()"> Average
+        </label>
+        <label>
+            <input type="radio" name="operation" value="maximum" onClick="chooseOp()"> Max
+        </label>
+        <label>
+            <input type="radio" name="operation" value="minimum" onClick="chooseOp()"> Min
+        </label>
+    </form>
+
+    <p id="result1"></p>
+
+    <script>
+        function chooseOp() {
+            const base = parseFloat(document.getElementById("form1_age").value);
+            const conversion = parseFloat(document.getElementById("form1_nick").value);
+            const operation = document.querySelector('input[name="operation"]:checked').value;
+           
+            out=document.getElementById("result1")
+            let result1;
+            switch (operation) {
+                case "mean":
+                    result1 = (base * conversion / 2)
+                    out.innerHTML = "Average of " + base + " and " + conversion + " is " + result1
+                    break;
+                case "maximum":
+                    if (base > conversion)
+                        result1 = base
+                    else
+                        result1 = conversion
+
+                    out.innerHTML = "Max of " + base + " and " + conversion + " is " + result1
+                    break;
+                case "minimum": 
+                    if (base < conversion)
+                        result1 = base
+                    else
+                        result1 = conversion
+
+                    out.innerHTML = "Min of " + base + " and " + conversion + " is " + result1
+                    break;
+                default:
+                    result1 = "";
+            }
+
+            document.getElementById("result1").innerHTML = `${operation} of ${base} and ${conversion} is ${result1}`;
+        }
+    </script>
+
+</body>
+
+</html>
